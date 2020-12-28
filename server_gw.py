@@ -11,12 +11,16 @@ def index():
 @app.route('/exec')
 def exec():
     command = request.args.get('command')
-    
-    response = subprocess.run([command], stdout=subprocess.PIPE)
+    args = request.args.get('args')
+    target = 'Executed command = ' + command
+    target += 'argus = ' + args
+    target += '<hr>'
+
+    response = subprocess.run([command,args], stdout=subprocess.PIPE)
     ss = str(response.stdout, 'utf-8')
     print(command,ss)
-    rr = ss.replace('\n','<p>')
-    return (rr)
+    target += ss.replace('\n','<p>')
+    return (target)
 @app.route('/ls')
 def ls():
     response = subprocess.run(["ls","-l"], stdout=subprocess.PIPE)
