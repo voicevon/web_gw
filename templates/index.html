@@ -5,11 +5,13 @@
   </head>
   <body style="color:greenyellow">
     <div>
-      <a href='/exec?command=ls&args=-l'>ls</a>
+      <a href='/exec?command=ls%20-l'>ls</a>
       <p>
-      <a href='/exec?command=cd&args=~'> cd ~ </a>
+      <a href='/exec?command=cd ~'> cd ~ </a>
       <p>
-        <a href='/exec?command=ibv_devices'> ibv_devices </a>
+        <a href='/exec?command=ibv_devices'> ibv_devices </a>      
+      <p>
+        <a href='/exec?command=ibv_devinfo -d mlx4_1'> ibv_devices </a>
 
 
       <p>{{ message }}</p>
