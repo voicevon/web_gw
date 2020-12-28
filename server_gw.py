@@ -11,7 +11,6 @@ def index():
 @app.route('/exec')
 def exec():
     command = request.args.get('command')
-    return (command)
     
     response = subprocess.run([command], stdout=subprocess.PIPE)
     ss = str(response.stdout, 'utf-8')
