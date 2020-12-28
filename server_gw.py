@@ -10,17 +10,17 @@ def index():
     return render_template("index.html", message="Hello Flask!");   
 @app.route('/exec')
 def exec():
-    command = request.args.get('command')
-    args = request.args.get('args')
-    target = 'Executed command = ' + command
-    target += 'argus = ' + args
-    target += '<hr>'
+    command = request.args.get('command', default='')
+    args = request.args.get('args', default='')
+    target =  command + ' ' + args
+    target += '<hr> <pre>'
 
     response = subprocess.run([command,args], stdout=subprocess.PIPE)
     ss = str(response.stdout, 'utf-8')
     print(command,ss)
     target += ss.replace('\n','<p>')
     return (target)
+
 @app.route('/ls')
 def ls():
     response = subprocess.run(["ls","-l"], stdout=subprocess.PIPE)
